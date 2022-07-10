@@ -1,0 +1,9 @@
+name:
+  maker: cisco
+  index: 1
+  tags:
+    - branch
+    - router
+  addresses:
+    g0: 10.0.0.1/24
+    g1: 20.0.0.1/24

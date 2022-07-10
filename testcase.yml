@@ -1,0 +1,56 @@
+req_r_to_l:
+  - src_ip_real: 10.0.1.1
+    src_ip_public: 1.1.1.1
+    dst_ip_real: 192.168.1.1
+    dst_ip_public: 100.100.1.1
+    protocol: tcp
+    dst_port: 80
+    req: 'true'
+
+  - src_ip_real: 10.0.2.0/24
+    src_ip_public: 1.1.2.1
+    dst_ip_real: 192.168.2.1
+    dst_ip_public: 100.100.2.1
+    protocol: tcp
+    dst_port: 80
+    req: 'true'
+    
+  - src_ip_real: 10.0.3.1
+    src_ip_public: 1.1.3.1
+    dst_ip_real: 192.168.3.0/28
+    dst_ip_public: 100.100.3.1
+    protocol: tcp
+    dst_port: 80
+    req: 'true'
+    
+  - src_ip_real: 10.0.4.1
+    src_ip_public: 1.1.4.1
+    dst_ip_real: 192.168.4.1
+    dst_ip_public: 100.100.4.1
+    protocol: tcp
+    dst_port: 80
+    req: 'true'
+    
+  - src_ip_real: 10.0.5.1-10.0.5.5
+    src_ip_public: 1.1.5.1
+    dst_ip_real: 192.168.5.1
+    dst_ip_public: 100.100.5.1
+    protocol: tcp
+    dst_port: 80
+    req: 'true'
+    
+  - src_ip_real: 10.0.6.1
+    src_ip_public: 1.1.6.1
+    dst_ip_real: 192.168.6.1-192.168.6.6
+    dst_ip_public: 100.100.6.1
+    protocol: tcp
+    dst_port: 80
+    req: 'true'
+    
+  - src_ip_real: 10.0.7.1
+    src_ip_public: 1.1.7.1
+    dst_ip_real: 192.168.7.1
+    dst_ip_public: 100.100.7.1
+    protocol: tcp
+    dst_port: 80
+    req: 'true'

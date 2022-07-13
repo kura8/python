@@ -16,25 +16,25 @@ class CommReqExpand():
         expanded_testcase = []
 
         for case in testcase_true:
+            case1 = case.copy()
+            case2 = case.copy()
             if '/' in case['src_ip_real']:
-                expanded_testcase.append( case.update( {'src_ip_real': ip_network(case['src_ip_real'])[0]} ))
-                expanded_testcase.append( case.update( {'src_ip_real': ip_network(case['src_ip_real'])[-1]} ))
-                pprint('111111111111111111')
+                case1.update( {'src_ip_real': format(list(ip_network(case['src_ip_real']).hosts())[0])} )
+                case2.update( {'src_ip_real': format(list(ip_network(case['src_ip_real']).hosts())[-1])} )
             elif '/' in case['dst_ip_real']:
-                expanded_testcase.append( case.update( {'dst_ip_real': ip_network(case['dst_ip_real'])[0]}  ))
-                expanded_testcase.append( case.update( {'dst_ip_real': ip_network(case['dst_ip_real'])[-1]} ))
-                pprint('222222222222222222')
+                case1.update( {'dst_ip_real': format(list(ip_network(case['src_ip_real']).hosts())[0])} )
+                case2.update( {'dst_ip_real': format(list(ip_network(case['src_ip_real']).hosts())[-1])} )
             elif '-' in case['src_ip_real']:
-                expanded_testcase.append( case.update( {'src_ip_real': case['src_ip_real'].split('-')[0]} ))
-                expanded_testcase.append( case.update( {'src_ip_real': case['src_ip_real'].split('-')[1]} ))    
-                pprint('333333333333333333')
+                case1.update( {'src_ip_real': case['src_ip_real'].split('-')[0]} )
+                case2.update( {'src_ip_real': case['src_ip_real'].split('-')[1]} )
             elif '-' in case['dst_ip_real']:
-                expanded_testcase.append( case.update( {'dst_ip_real': case['dst_ip_real'].split('-')[0]} ))
-                expanded_testcase.append( case.update( {'dst_ip_real': case['dst_ip_real'].split('-')[1]} ))
-                pprint('444444444444444444')
+                case1.update( {'dst_ip_real': case['dst_ip_real'].split('-')[0]} )
+                case2.update( {'dst_ip_real': case['dst_ip_real'].split('-')[1]} )
             else:
-                expanded_testcase.append( case )                
-                print('5555555555555555555')
+                expanded_testcase.append( case )  
+                continue              
+            expanded_testcase.append( case1 )
+            expanded_testcase.append( case2 )
         return  expanded_testcase
 
 pprint(CommReqExpand().expand())

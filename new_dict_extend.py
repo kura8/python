@@ -1,4 +1,4 @@
-# 辞書のリストを基に新しい辞書のリストを作る
+# 辞書のリストを基に新しい辞書のリストを作る。固定値も入れられるパターン
 from pprint import pprint
 import yaml
 
@@ -7,7 +7,7 @@ class CommReqExpand():
     new_key_value = [
         {
             'key': 'inside_local',
-            'value': 'src_ip_real',
+            'fixed_value': 'src_ip_real',
         },
         {
             'key': 'inside_global',
@@ -33,11 +33,14 @@ class CommReqExpand():
             testcase = yaml.safe_load(file)['req_r_to_l']
         testcase_true =  [i for i in testcase if i['req'] in 'true']
         new_key_testcase = []
-
+            
         for case in testcase_true:
             _dict = {}
-            for new_dict in self.new_key_value:
-                _dict.update( {new_dict['key']: case[new_dict['value']] } )
+            for i in self.new_key_value:
+                if 'fixed_value' in i:
+                    _dict.update( {i['key']: i['fixed_value'] } )
+                else:
+                    _dict.update( {i['key']: case[i['value']] } )                    
             new_key_testcase.append(_dict)  
         return new_key_testcase
 
